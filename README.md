@@ -28,7 +28,7 @@ you can publish config file:
 
 ```bash
 #config
-php artisan vendor:publish --provider="VandarPay\ExceptionMonitoring\Providers\ResponderServiceProvider" --tag="config"
+php artisan vendor:publish --provider="VandarPay\ExceptionMonitoring\Providers\ExceptionMonitoringServiceProvider" --tag="config"
 ```
 
 ## Usage
