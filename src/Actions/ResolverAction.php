@@ -15,7 +15,7 @@ class ResolverAction extends Controller
 		$token = $request->header('X-TOKEN');
 
 		if (!$token || $token !== config('exception-monitoring.token')) {
-			response()->json('UNAUTHENTICATED', 401);
+			return response()->json('UNAUTHENTICATED', 401);
 		}
 
 		if (ExceptionMonitoring::exists($key)) {
