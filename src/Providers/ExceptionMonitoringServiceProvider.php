@@ -42,7 +42,7 @@ class ExceptionMonitoringServiceProvider extends ServiceProvider
                 [
                     __DIR__.'/../Configs/config.php' => config_path('exception-monitoring.php'),
                 ],
-                'config'
+                'exception-monitoring-config'
             );
         }
     }
