@@ -12,7 +12,9 @@ class ResolverAction extends Controller
 
 	public function __invoke(Request $request, string $key): JsonResponse
 	{
-		if ($request->header('X-TOKEN') === config('exception-monitoring.token')) {
+		$token = $request->header('X-TOKEN');
+
+		if (!$token && $token !== config('exception-monitoring.token')) {
 			response()->json('UNAUTHENTICATED', 401);
 		}
 
