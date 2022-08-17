@@ -28,13 +28,16 @@ you can publish config file:
 
 ```bash
 #config
-php artisan vendor:publish --provider="VandarPay\ExceptionMonitoring\Providers\ExceptionMonitoringServiceProvider" --tag="config"
+php artisan vendor:publish --provider="VandarPay\ExceptionMonitoring\Providers\ExceptionMonitoringServiceProvider" --tag="exception-monitoring-config"
 ```
 
 ## Usage
 
-Here's a quick example:
 
+
+### Set key on redis
+
+Here's a quick example:
 ```php
 use VandarPay\ExceptionMonitoring\Facades\ExceptionMonitoring;
     
@@ -55,7 +58,19 @@ use VandarPay\ExceptionMonitoring\Facades\ExceptionMonitoring;
 ExceptionMonitoring::set('mandate-store',60); // this key will exist until 60 second.
 ```
 
+### Calling Api for getin Status of mapped sections
 there is a route with this pattern `/api/exception-monitoring/{key}`. 
+
+for security and privacy you must send `X-TOKEN` header with value set in config with `token` key name.
+make sure in config bellow key is set:
+```php
+	'token' => env('EXCEPTION_MONITORING_TOKEN')
+```
+simply you can set `EXCEPTION_MONITORING_TOKEN` in `.env` file.
+
+```dotenv
+EXCEPTION_MONITORING_TOKEN="your_token"
+```
 
 for example if you call `https://your-domain.com/api/exception-monitoring/mandate-store` and,
  
@@ -71,7 +86,14 @@ or if key not exists in redis you will get bellow response:
 "OK"
 ```
 
-also you can remove key from redis manually like bellow:
+and if key `X-TOKEN` header not exists or invalid you will get bellow response:
+```php
+//status code = 401
+"UNAUTHENTICATED"
+```
+
+### Remove key from redis manually
+ you can remove key from redis manually like bellow:
 
 ```php
 use VandarPay\ExceptionMonitoring\Facades\ExceptionMonitoring;
