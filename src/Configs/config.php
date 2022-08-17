@@ -4,5 +4,6 @@
  */
 
 return [
-    'ttl' => 300, //in seconds
+	'ttl' => 300, //in seconds
+	'token' => env('EXCEPTION_MONITORING_TOKEN')
 ];
