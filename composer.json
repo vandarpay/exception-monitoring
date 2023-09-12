@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"require": {
 		"php": "^7.4|^8.0",
-		"laravel/framework": "^7.0|^8.0|^9.0"
+		"laravel/framework": "^7.0|^8.0|^9.0|^10.0"
 	},
 	"authors": [
 		{
@@ -14,7 +14,7 @@
 		},
 		{
 			"name": "Farshid Rezaei",
-			"email": "farshid.net1@yahoo.com",
+			"email": "farshid.net1@gmail.com",
 			"homepage": "https://farshidrezaei.ir",
 			"role": "Full-Stack Web Developer"
 		}
